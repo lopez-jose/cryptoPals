@@ -30,19 +30,24 @@ def score(input_bytes,char_value):
 
 def main():
 
+    f = open("file.txt","r")
     input_1 = "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736"
-    input_bytes= bytes.fromhex(input_1)
+    #input_bytes= bytes.fromhex(input_1)
     get_score = 0
     stored = ''
     largest_score=0
-    for i in range(256):
-        get_score=score(input_bytes,i)
-        output_bytes=single_byte_XOR(input_bytes,i)
-        #print(output_bytes)
-        if(get_score>largest_score):
-            stored= output_bytes
-            largest_score=get_score
-           # print(output_bytes)
+    line = f.readline()
+    while line:
+        input_bytes=bytes.fromhex(line)
+        for i in range(256):
+            get_score=score(input_bytes,i)
+            output_bytes=single_byte_XOR(input_bytes,i)
+            #print(output_bytes)
+            if(get_score>largest_score):
+                stored= output_bytes
+                largest_score=get_score
+            # print(output_bytes)
+        line=f.readline()
         
     print(stored)
 
