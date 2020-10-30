@@ -1,7 +1,5 @@
 import base64
 
-
-
 def hex_xor(input_1, input_2):
     bits_1= int(input_1, 16)
     bits_2= int(input_2,16)
