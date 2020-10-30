@@ -3,23 +3,21 @@ import base64
 
 
 def hex_xor(input_1, input_2):
-    bits_1=
+    bits_1= int(input_1, 16)
+    bits_2= int(input_2,16)
+    xor = bits_1^bits_2
+    return hex(xor)[2:] #the [n:] removes the first two characters
 
 def main():
-    input1 = "1c0111001f010100061a024b53535009181c"
-    input2= "686974207468652062756c6c277320657965"
-
-    xor=hex_xor(input1,input2)
+    input_1 = "1c0111001f010100061a024b53535009181c"
+    input_2= "686974207468652062756c6c277320657965"
 
 
 
-    dec1 = int(input1,16)
-    dec2=int(input2,16)
-    xor=dec1^dec2
+    print(hex_xor(input_1,input_2))
 
-    #xor = input1_bytes^input2_bytes
+    
 
-
-    print(xor)
+    
 
 main()
