@@ -21,19 +21,12 @@ def single_byte_XOR(input_bytes,char_value):
 #input the actual bytes
 def score(input_bytes,char_value):
 
-    array = [12.02,9.10,8.12,7.68,7.31,6.95,6.28,6.02,5.92,4.32,3.98,2.88]
-    array_hold=[]
-    #E T A 0 I N S R H D L U 
-    output_bytes=single_byte_XOR(input_bytes,char_value)
-    
     sum = 0
-
+    output_bytes=single_byte_XOR(input_bytes,char_value)
     for i in output_bytes:
         sum+=CHARACTER_FREQ.get(chr(i).lower(),0)
-        
-    print(sum)
 
-    return 0
+    return sum
 
    
 
@@ -42,11 +35,18 @@ def main():
     input_1 = "1b37373331363f78151b7f2b783431333d78397828372d363c78373e783a393b3736"
     input_bytes= bytes.fromhex(input_1)
     get_score = 0
-    smallest_score = 0
-
+    stored = ''
+    largest_score=0
     for i in range(256):
         get_score=score(input_bytes,i)
+        output_bytes=single_byte_XOR(input_bytes,i)
+        #print(output_bytes)
+        if(get_score>largest_score):
+            stored= output_bytes
+            largest_score=get_score
+           # print(output_bytes)
         
+    print(stored)
 
         
         
