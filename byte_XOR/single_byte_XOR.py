@@ -1,3 +1,11 @@
+CHARACTER_FREQ = {
+    'a': 0.0651738, 'b': 0.0124248, 'c': 0.0217339, 'd': 0.0349835, 'e': 0.1041442, 'f': 0.0197881, 'g': 0.0158610,
+    'h': 0.0492888, 'i': 0.0558094, 'j': 0.0009033, 'k': 0.0050529, 'l': 0.0331490, 'm': 0.0202124, 'n': 0.0564513,
+    'o': 0.0596302, 'p': 0.0137645, 'q': 0.0008606, 'r': 0.0497563, 's': 0.0515760, 't': 0.0729357, 'u': 0.0225134,
+    'v': 0.0082903, 'w': 0.0171272, 'x': 0.0013692, 'y': 0.0145984, 'z': 0.0007836, ' ': 0.1918182
+}
+
+
 def single_byte_XOR(input_bytes,char_value):
     output_bytes = b''
     for byte in input_bytes:
@@ -18,24 +26,16 @@ def score(input_bytes,char_value):
     #E T A 0 I N S R H D L U 
     output_bytes=single_byte_XOR(input_bytes,char_value)
     
-    sum_e = 0
+    sum = 0
 
-    for i in range(0,len(output_bytes)):
-        if(output_bytes[i]==101):
-            #print(output_bytes[i])
-            sum_e+=1
+    for i in output_bytes:
+        sum+=CHARACTER_FREQ.get(chr(i).lower(),0)
         
+    print(sum)
 
-    expected_e=(sum_e/len(output_bytes))*100
+    return 0
 
-   # print(expected_e)
-    if(expected_e>4):
-        if(expected_e<20):
-            print(output_bytes)
-    
-    return   (array[0]-expected_e)
-
-
+   
 
 def main():
 
