@@ -24,9 +24,4 @@ def main():
     base16_bytes = base64.b16encode(output_bytes)
     print(base16_bytes)
    
-
-
-
-
-
 main()
