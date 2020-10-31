@@ -14,11 +14,18 @@ def main():
     key = "ICE"
     input_bytes=bytes(input,'utf-8')
     key_bytes= bytes(key,'utf-8')
-    
+    index = 0;
+    output_bytes = b''
     for byte in input_bytes:
-        #print(byte,end=' ')
-    for byte in key_bytes:
-        print(byte,end=' ')
+        output_bytes+=bytes([byte^key_bytes[index]])
+        index+=1
+        if(index ==3):
+            index = 0
+    #for byte in key_bytes:
+       # print(byte,end=' ')
+
+    #xor = input_bytes[0]^key_bytes[0]
+    print(output_bytes)
    
 
 
