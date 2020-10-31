@@ -11,16 +11,20 @@ def single_byte_XOR(input_bytes,char_value):
 
 def main():
     input = "Burning 'em, if you ain't quick and nimble I go crazy when I hear a cymbal"
+    input_bytes=bytes(input,'utf-8')
+    key_bytes=
     key = "ICE"
     count = 0
     output = ''
     for i in input:
-        #print (i)
+        print (i)
         xor = i^key[count]
         output+=xor
         if(count == 2):
             count = 0
     print(output)
+
+
 
 
 
