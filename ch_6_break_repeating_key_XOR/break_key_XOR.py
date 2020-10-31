@@ -21,6 +21,11 @@ def hamming_distance(bytes_1, bytes_2):
 
 
 def main():
+    f = open("file.txt","r")
+    line = f.readline()
+    while line:
+        print(line)
+        line =f.readline()
     input_1 = "this is a test"
     input_2 = "wokka wokka!!!"
 
