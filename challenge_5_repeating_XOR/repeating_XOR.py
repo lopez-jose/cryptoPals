@@ -1,6 +1,6 @@
 
 #I C E  I C E   I C E 
-
+import base64
 
 def single_byte_XOR(input_bytes,char_value):
     output_bytes = b''
@@ -8,6 +8,10 @@ def single_byte_XOR(input_bytes,char_value):
         output_bytes+=bytes([byte^char_value])
 
     return output_bytes
+
+def key_XOR(input_bytes,key_bytes):
+    return 0
+
 
 def main():
     input = "Burning 'em, if you ain't quick and nimble I go crazy when I hear a cymbal"
@@ -23,9 +27,9 @@ def main():
             index = 0
     #for byte in key_bytes:
        # print(byte,end=' ')
-
+    base16_bytes = base64.b16encode(output_bytes)
     #xor = input_bytes[0]^key_bytes[0]
-    print(output_bytes)
+    print(base16_bytes)
    
 
 
