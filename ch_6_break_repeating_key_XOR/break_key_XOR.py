@@ -34,6 +34,8 @@ def main():
     lowest_avg_hamming = 0
     for i in range(39):
         i+=2
+        print(string_bytes[:i])
+        print(string_bytes[i:2*i])
         print(hamming_distance(string_bytes[:i],string_bytes[i:2*i]))
     input_1 = "this is a test"
     input_2 = "wokka wokka!!!"
