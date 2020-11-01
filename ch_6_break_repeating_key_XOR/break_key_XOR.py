@@ -31,11 +31,10 @@ def main():
         s+=line
     print(s)
     string_bytes = bytes(s,'utf-8')
-    i = 2
+    lowest_avg_hamming = 0
     for i in range(39):
         i+=2
-        print(i)
-        hamming_distance(string_bytes[])
+        print(hamming_distance(string_bytes[:i],string_bytes[i:2*i]))
     input_1 = "this is a test"
     input_2 = "wokka wokka!!!"
 
