@@ -23,9 +23,19 @@ def hamming_distance(bytes_1, bytes_2):
 def main():
     f = open("file.txt","r")
     line = f.readline()
+    s = ""
+    s+=line
     while line:
-        print(line)
+        #print(line)
         line =f.readline()
+        s+=line
+    print(s)
+    string_bytes = bytes(s,'utf-8')
+    i = 2
+    for i in range(39):
+        i+=2
+        print(i)
+        hamming_distance(string_bytes[])
     input_1 = "this is a test"
     input_2 = "wokka wokka!!!"
 
