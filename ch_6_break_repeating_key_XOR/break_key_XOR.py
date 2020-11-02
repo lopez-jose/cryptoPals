@@ -94,7 +94,20 @@ def main():
 
     print(bytes(strings[0],'utf-8'))
 
-
+    input_bytes= bytes(strings[0],'utf-8')
+    get_score = 0
+    stored = ''
+    largest_score=0
+    for i in range(256):
+        get_score=score(input_bytes,i)
+        output_bytes=single_byte_XOR(input_bytes,i)
+        #print(output_bytes)
+        if(get_score>largest_score):
+            stored= output_bytes
+            largest_score=get_score
+           # print(output_bytes)
+        
+    print(stored)
 
     #listname.sort
     for i in range(39):
