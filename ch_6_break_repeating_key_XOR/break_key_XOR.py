@@ -70,7 +70,7 @@ def main():
     key_lengths = [3, 5.0]
     strings = []
     decrypted_strings = []
-    length = 5
+    length = 6
     # here we make the array of strings for the substrings
     for i in range(length):
         strings.append("")
@@ -103,7 +103,7 @@ def main():
     decrypted = ""
     # here we combine the split decrypted substrings into one original string
     for i in range(int(len(string_bytes)/length)):
-        print(chr(decrypted_strings[pos][i]))
+        print(chr(decrypted_strings[pos][i]), end="")
         pos += 1
         if(pos > length-1):
             pos = 0
