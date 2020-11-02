@@ -59,13 +59,38 @@ def main():
         #print(line)
         line =f.readline()
         s+=line
-    print(s)
+    #print(s)
     string_bytes = bytes(s,'utf-8')
     lowest_avg_hamming = hamming_distance(string_bytes[:2],string_bytes[2:4])/2
     print(lowest_avg_hamming)
     key_length = 0
     key_lengths =[3,5.0]
+    strings = []
+    length = 3
+    for i in range(length):
+        strings.append("")
+    bytes_1 = ""
+    bytes_2= ""
+    pos = 0
+    for i in range(10):
+        strings[pos]+=str(string_bytes)
+        pos+=1
+        if(pos>length-1):
+            pos = 0
+    #print(bytes_1)
+
+    print("hello")
+    #print(bytes_2)
+
     
+    print(strings[0])
+    print("end of string[0]")
+    print(strings[1])
+
+
+
+
+
     #listname.sort
     for i in range(39):
         i+=2
@@ -76,7 +101,7 @@ def main():
         key_lengths.append([(i,avg_hamming)])
     
     #key_lengths.sort()
-
+    #now divide up the code into separate chunks 
     print(key_lengths)
    # print(key_length)
 main()
