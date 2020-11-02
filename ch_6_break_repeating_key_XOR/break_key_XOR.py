@@ -72,22 +72,27 @@ def main():
     bytes_1 = ""
     bytes_2= ""
     pos = 0
-    for i in range(10):
-        strings[pos]+=str(string_bytes)
+    for i in range(len(string_bytes)):
+        strings[pos]+=str(string_bytes[i])
         pos+=1
         if(pos>length-1):
             pos = 0
+
     #print(bytes_1)
 
     print("hello")
     #print(bytes_2)
 
+
     
     print(strings[0])
     print("end of string[0]")
     print(strings[1])
+    print("end of string[1]")
+    print(strings[2])
+    print("end of string[2]")
 
-
+    print(bytes(strings[0],'utf-8'))
 
 
 
