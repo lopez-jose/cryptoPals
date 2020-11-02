@@ -8,29 +8,29 @@ CHARACTER_FREQ = {
 }
 
 
-def single_byte_XOR(input_bytes,char_value):
+def single_byte_XOR(input_bytes, char_value):
     output_bytes = b''
     for byte in input_bytes:
-        output_bytes+=bytes([byte^char_value])
+        output_bytes += bytes([byte ^ char_value])
 
     return output_bytes
 
 
-#frequency in english of letters. E is the most common count # of occurences, then divide by length, find the difference, add difference
-#smallest difference is equal to the score. 
+# frequency in english of letters. E is the most common count # of occurences, then divide by length, find the difference, add difference
+# smallest difference is equal to the score.
 
-#bruh please starts with a,b,c,d,
-#input the actual bytes
-def score(input_bytes,char_value):
+# bruh please starts with a,b,c,d,
+# input the actual bytes
+def score(input_bytes, char_value):
 
     sum = 0
-    output_bytes=single_byte_XOR(input_bytes,char_value)
+    output_bytes = single_byte_XOR(input_bytes, char_value)
     for i in output_bytes:
-        sum+=CHARACTER_FREQ.get(chr(i).lower(),0)
+        sum += CHARACTER_FREQ.get(chr(i).lower(), 0)
 
     return sum
 
-   
+
 def hamming_distance(bytes_1, bytes_2):
     index = 0
     XOR_bytes = b''
@@ -51,75 +51,77 @@ def hamming_distance(bytes_1, bytes_2):
 
 
 def main():
-    f = open("file.txt","r")
+    # Opens the file and reads
+    f = open("file.txt", "r")
     line = f.readline()
+
     s = ""
-    s+=line
+    s += line
     while line:
-        #print(line)
-        line =f.readline()
-        s+=line
-    #print(s)
-    string_bytes = bytes(s,'utf-8')
-    lowest_avg_hamming = hamming_distance(string_bytes[:2],string_bytes[2:4])/2
-    print(lowest_avg_hamming)
+        line = f.readline()
+        s += line
+
+    string_bytes = bytes(s, 'utf-8')
+    # sets the lowest average to the first average
+    lowest_avg_hamming = hamming_distance(
+        string_bytes[:2], string_bytes[2:4])/2
+
     key_length = 0
-    key_lengths =[3,5.0]
+    key_lengths = [3, 5.0]
     strings = []
-    length = 3
+    decrypted_strings = []
+    length = 5
+    # here we make the array of strings for the substrings
     for i in range(length):
         strings.append("")
-    bytes_1 = ""
-    bytes_2= ""
+        decrypted_strings.append("")
+
     pos = 0
+    # here the string is split into substrings length times
     for i in range(len(string_bytes)):
-        strings[pos]+=str(string_bytes[i])
-        pos+=1
-        if(pos>length-1):
+        strings[pos] += str(string_bytes[i])
+        pos += 1
+        if(pos > length-1):
             pos = 0
+    # here each substring is then decrypted using a single char XOR
+    # the result is then stored in decrypted_strings[i]
+    for i in range(length):
+        input_bytes = bytes(strings[i], 'utf-8')
+        get_score = 0
+        stored = ''
+        largest_score = 0
+        for p in range(256):
+            get_score = score(input_bytes, p)
+            output_bytes = single_byte_XOR(input_bytes, p)
 
-    #print(bytes_1)
+            if(get_score > largest_score):
+                stored = output_bytes
+                largest_score = get_score
+        decrypted_strings[i] = stored
 
-    print("hello")
-    #print(bytes_2)
+    pos = 0
+    decrypted = ""
+    # here we combine the split decrypted substrings into one original string
+    for i in range(int(len(string_bytes)/length)):
+        print(chr(decrypted_strings[pos][i]))
+        pos += 1
+        if(pos > length-1):
+            pos = 0
+    print(decrypted)
 
-
-    
-    print(strings[0])
-    print("end of string[0]")
-    print(strings[1])
-    print("end of string[1]")
-    print(strings[2])
-    print("end of string[2]")
-
-    print(bytes(strings[0],'utf-8'))
-
-    input_bytes= bytes(strings[0],'utf-8')
-    get_score = 0
-    stored = ''
-    largest_score=0
-    for i in range(256):
-        get_score=score(input_bytes,i)
-        output_bytes=single_byte_XOR(input_bytes,i)
-        #print(output_bytes)
-        if(get_score>largest_score):
-            stored= output_bytes
-            largest_score=get_score
-           # print(output_bytes)
-        
-    print(stored)
-
-    #listname.sort
     for i in range(39):
-        i+=2
+        i += 2
         length = len(string_bytes[:i])
-        #print(len(string_bytes[i:i*2]))
-        avg_hamming = hamming_distance(string_bytes[:i],string_bytes[i:2*i])/length
+        # print(len(string_bytes[i:i*2]))
+        avg_hamming = hamming_distance(
+            string_bytes[:i], string_bytes[i:2*i])/length
         print(avg_hamming)
-        key_lengths.append([(i,avg_hamming)])
-    
-    #key_lengths.sort()
-    #now divide up the code into separate chunks 
+        key_lengths.append([(i, avg_hamming)])
+
+    # key_lengths.sort()
+    # now divide up the code into separate chunks
     print(key_lengths)
+
+
    # print(key_length)
 main()
