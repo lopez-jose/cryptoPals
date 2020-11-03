@@ -30,6 +30,8 @@ def score(input_bytes, char_value):
 
     return sum
 
+# finds the hamming distance between two even sized byte strings
+
 
 def hamming_distance(bytes_1, bytes_2):
     index = 0
