@@ -16,11 +16,9 @@ def single_byte_XOR(input_bytes, char_value):
     return output_bytes
 
 
-# frequency in english of letters. E is the most common count # of occurences, then divide by length, find the difference, add difference
-# smallest difference is equal to the score.
+# takes the input_bytes string and the char value and calculates the score using a xor of said bytes with a specific char
+# takes the result of the xor and gives it a score according to the dictionary value
 
-# bruh please starts with a,b,c,d,
-# input the actual bytes
 def score(input_bytes, char_value):
 
     sum = 0
