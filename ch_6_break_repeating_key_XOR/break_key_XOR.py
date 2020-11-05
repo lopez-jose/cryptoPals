@@ -110,6 +110,19 @@ def main():
             pos = 0
     print(decrypted)
 
+    class Person:
+        def __init__(self, name, age):
+            self.name = name
+            self.age = age
+    my_objects = []
+    for i in range(20):
+        my_objects.append(Person("Hello",i))
+    
+    print(my_objects[5].age)
+    new_list = sorted(my_objects,key= lambda Person: Person.age, reverse = True)
+    for i in range (20):
+        print(new_list[i].age)
+    # let's find the 5 smallest key values
     for i in range(39):
         i += 2
         length = len(string_bytes[:i])
