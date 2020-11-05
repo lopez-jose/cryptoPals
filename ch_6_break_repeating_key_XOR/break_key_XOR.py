@@ -49,7 +49,6 @@ def hamming_distance(bytes_1, bytes_2):
 
     return count
 
-# test comment
 
 
 def main():
