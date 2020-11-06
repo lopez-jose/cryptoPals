@@ -58,10 +58,12 @@ def main():
 
     s = ""
     s += line
+    #loops f.readline and adds input to the s string
     while line:
         line = f.readline()
         s += line
 
+    #converts s into bytes and removes utf-8 encoding
     string_bytes = bytes(s, 'utf-8')
  
     key_lengths = []
@@ -107,29 +109,13 @@ def main():
     print(decrypted)
 
 
-    # here we create 
-    
-    class Person:
-        def __init__(self, name, age):
-            self.name = name
-            self.age = age
-    my_objects = []
-    for i in range(20):
-        my_objects.append(Person("Hello",i))
-    
-    print(my_objects[5].age)
-    new_list = sorted(my_objects,key= lambda Person: Person.age, reverse = True)
-    for i in range (20):
-        print(new_list[i].age)
-
-
+    #the hamming class is used to store an object where index and distance are recorded
     class Hamming:
         def __init__(self,index,distance):
             self.index = index  
             self.distance = distance
     my_hamming = []
     
-    # let's find the 5 smallest key values
     for i in range(39):
         i += 2
         length = len(string_bytes[:i])
