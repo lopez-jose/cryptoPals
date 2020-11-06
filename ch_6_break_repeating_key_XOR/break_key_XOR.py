@@ -39,10 +39,8 @@ def hamming_distance(bytes_1, bytes_2):
 
     #XORs bytes in bytes_1 and bytes_2
     for byte in bytes_1:
-        print("Bytes = ", end= " ")
-        print(byte)
-        x = bytes([byte ^ bytes_2[index]])
-        XOR_bytes += x
+        xor = bytes([byte ^ bytes_2[index]])
+        XOR_bytes += xor
         index += 1
     #takes bits in each byte of XOR_bytes and adds +1 to difference_count if = 1
     for byte in XOR_bytes:
