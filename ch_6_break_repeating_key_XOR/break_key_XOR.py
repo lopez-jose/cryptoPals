@@ -131,7 +131,7 @@ def main():
         def __init__(self,index,distance):
             self.index = index  
             self.distance = distance
-    my_Hamming = []
+    my_hamming = []
     
     # let's find the 5 smallest key values
     for i in range(39):
@@ -143,14 +143,11 @@ def main():
         print(avg_hamming)
         print(i)
         key_lengths.append([(i, avg_hamming)])
-        my_Hamming.append(i,avg_hamming)
-
-    for i in range (len(my_Hamming)):
-        print(i)
-
-    # key_lengths.sort()
-    # now divide up the code into separate chunks
-    print(key_lengths)
-
-   # print(key_length)
+        my_hamming.append(Hamming(i,avg_hamming))
+    new_hamming_list = sorted(my_hamming,key = lambda Hamming: Hamming.distance)
+    print("The sorted list will now be printed")    
+    for i in range (len(new_hamming_list)):
+        print(new_hamming_list[i].index, end = " ")
+        print(new_hamming_list[i].distance)
+    
 main()
