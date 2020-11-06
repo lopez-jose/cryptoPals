@@ -63,12 +63,8 @@ def main():
         s += line
 
     string_bytes = bytes(s, 'utf-8')
-    # sets the lowest average to the first average
-    lowest_avg_hamming = hamming_distance(
-        string_bytes[:2], string_bytes[2:4])/2
-
-    key_length = 0
-    key_lengths = [3, 5.0]
+ 
+    key_lengths = []
     strings = []
     decrypted_strings = []
     length = 6
@@ -137,17 +133,16 @@ def main():
     for i in range(39):
         i += 2
         length = len(string_bytes[:i])
-        # print(len(string_bytes[i:i*2]))
         avg_hamming = hamming_distance(
             string_bytes[:i], string_bytes[i:2*i])/length
-        print(avg_hamming)
-        print(i)
         key_lengths.append([(i, avg_hamming)])
         my_hamming.append(Hamming(i,avg_hamming))
     new_hamming_list = sorted(my_hamming,key = lambda Hamming: Hamming.distance)
     print("The sorted list will now be printed")    
     for i in range (len(new_hamming_list)):
+        print("Length = ", end = " ")
         print(new_hamming_list[i].index, end = " ")
+        print ("\t Hamming Distance =")
         print(new_hamming_list[i].distance)
     
 main()
