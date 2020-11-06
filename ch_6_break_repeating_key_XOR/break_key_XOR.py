@@ -22,8 +22,6 @@ def single_byte_XOR(input_bytes, char_value):
 
 
 # takes the input_bytes string and the char value and calculates the score using a xor of said bytes with a specific char
-# takes the result of the xor and gives it a score according to the dictionary value
-
 def score(input_bytes, char_value):
 
     sum = 0
@@ -34,25 +32,27 @@ def score(input_bytes, char_value):
     return sum
 
 # finds the hamming distance between two even sized byte strings
-
-
 def hamming_distance(bytes_1, bytes_2):
     index = 0
     XOR_bytes = b''
+    difference_count = 0
+
+    #XORs bytes in bytes_1 and bytes_2
     for byte in bytes_1:
+        print("Bytes = ", end= " ")
+        print(byte)
         x = bytes([byte ^ bytes_2[index]])
         XOR_bytes += x
         index += 1
-
-    count = 0
+    #takes bits in each byte of XOR_bytes and adds +1 to difference_count if = 1
     for byte in XOR_bytes:
         temp = byte
         for i in range(7):
             if(temp & 1 != 0):
-                count += 1
+                difference_count += 1
             temp = temp >> 1
 
-    return count
+    return difference_count
 
 def hamming_distance_list(string_bytes,list_length):
 
@@ -72,7 +72,6 @@ def main():
 
     #converts s into bytes and removes utf-8 encoding
     string_bytes = bytes(s, 'utf-8')
- 
     strings = []
     decrypted_strings = []
     length = 6
