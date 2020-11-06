@@ -66,11 +66,10 @@ def main():
     #converts s into bytes and removes utf-8 encoding
     string_bytes = bytes(s, 'utf-8')
  
-    key_lengths = []
     strings = []
     decrypted_strings = []
     length = 6
-    # here we make the array of strings for the substrings
+    # here each respective array of strings for strings and decrypted_strings
     for i in range(length):
         strings.append("")
         decrypted_strings.append("")
@@ -121,14 +120,13 @@ def main():
         length = len(string_bytes[:i])
         avg_hamming = hamming_distance(
             string_bytes[:i], string_bytes[i:2*i])/length
-        key_lengths.append([(i, avg_hamming)])
         my_hamming.append(Hamming(i,avg_hamming))
     new_hamming_list = sorted(my_hamming,key = lambda Hamming: Hamming.distance)
     print("The sorted list will now be printed")    
     for i in range (len(new_hamming_list)):
         print("Length = ", end = " ")
-        print(new_hamming_list[i].index, end = " ")
-        print ("\t Hamming Distance =")
-        print(new_hamming_list[i].distance)
-    
+        print(new_hamming_list[i].index, end = " \t")
+        print (" Hamming Distance = ", end = " \t")
+        print(round((new_hamming_list[i].distance),3))
+        
 main()
