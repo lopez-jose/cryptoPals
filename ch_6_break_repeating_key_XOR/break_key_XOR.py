@@ -132,6 +132,7 @@ def main():
             self.index = index  
             self.distance = distance
     my_Hamming = []
+    
     # let's find the 5 smallest key values
     for i in range(39):
         i += 2
@@ -140,7 +141,12 @@ def main():
         avg_hamming = hamming_distance(
             string_bytes[:i], string_bytes[i:2*i])/length
         print(avg_hamming)
+        print(i)
         key_lengths.append([(i, avg_hamming)])
+        my_Hamming.append(i,avg_hamming)
+
+    for i in range (len(my_Hamming)):
+        print(i)
 
     # key_lengths.sort()
     # now divide up the code into separate chunks
