@@ -6,7 +6,12 @@ CHARACTER_FREQ = {
     'o': 0.0596302, 'p': 0.0137645, 'q': 0.0008606, 'r': 0.0497563, 's': 0.0515760, 't': 0.0729357, 'u': 0.0225134,
     'v': 0.0082903, 'w': 0.0171272, 'x': 0.0013692, 'y': 0.0145984, 'z': 0.0007836, ' ': 0.1918182
 }
-
+ #the hamming class is used to store an object where index and distance are recorded
+class Hamming:
+    def __init__(self,index,distance):
+        self.index = index  
+        self.distance = distance
+   
 
 def single_byte_XOR(input_bytes, char_value):
     output_bytes = b''
@@ -49,10 +54,12 @@ def hamming_distance(bytes_1, bytes_2):
 
     return count
 
+def hamming_distance_list(string_bytes,list_length):
 
+    return 0
 
 def main():
-    # Opens the file and reads
+    # Opens file.txt and reads into line
     f = open("file.txt", "r")
     line = f.readline()
 
@@ -108,11 +115,6 @@ def main():
     print(decrypted)
 
 
-    #the hamming class is used to store an object where index and distance are recorded
-    class Hamming:
-        def __init__(self,index,distance):
-            self.index = index  
-            self.distance = distance
     my_hamming = []
     
     for i in range(39):
