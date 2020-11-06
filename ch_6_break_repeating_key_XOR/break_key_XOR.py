@@ -125,6 +125,13 @@ def main():
     new_list = sorted(my_objects,key= lambda Person: Person.age, reverse = True)
     for i in range (20):
         print(new_list[i].age)
+
+
+    class Hamming:
+        def __init__(self,index,distance):
+            self.index = index  
+            self.distance = distance
+    my_Hamming = []
     # let's find the 5 smallest key values
     for i in range(39):
         i += 2
