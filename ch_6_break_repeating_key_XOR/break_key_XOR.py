@@ -35,9 +35,8 @@ def score(input_bytes, char_value):
 
     return sum
 
+
 # finds the hamming distance between two even sized byte strings
-
-
 def hamming_distance(bytes_1, bytes_2):
     index = 0
     XOR_bytes = b''
@@ -59,25 +58,20 @@ def hamming_distance(bytes_1, bytes_2):
     return difference_count
 
 
-def hamming_distance_list(string_bytes, list_length):
-
-    return 0
-
-
 def main():
-    # Opens file.txt and reads into line
+    # Opens file.txt to read into line
     f = open("file.txt", "r")
     line = f.readline()
 
-    s = ""
-    s += line
-    # loops f.readline and adds input to the s string
+    file_string = ""
+    file_string += line
+    # loops f.readline and adds input to the file_string string
     while line:
         line = f.readline()
-        s += line
+        file_string += line
 
-    # converts s into bytes and removes utf-8 encoding
-    string_bytes = bytes(s, 'utf-8')
+    # converts file_string into bytes and removes utf-8 encoding
+    string_bytes = bytes(file_string, 'utf-8')
     strings = []
     decrypted_strings = []
     length = 6
